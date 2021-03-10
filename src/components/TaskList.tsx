@@ -3,12 +3,17 @@ import { useState } from 'react';
 import '../styles/tasklist.scss';
 
 import { FiTrash, FiCheckSquare } from 'react-icons/fi';
+import { computeHeadingLevel } from '@testing-library/dom';
 
 interface Task {
   id: number;
   title: string;
   isComplete: boolean;
 }
+
+// interface KeyPress {
+//   event: React.KeyboardEvent;
+// }
 
 export function TaskList() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -47,6 +52,10 @@ export function TaskList() {
     setTasks(currentTask);
   }
 
+  // function handleKeyUp(event: KeyPress) {
+  //   console.log(event);
+  // }
+
   return (
     <section className="task-list container">
       <header>
@@ -58,6 +67,7 @@ export function TaskList() {
             placeholder="Adicionar novo todo"
             onChange={(e) => setNewTaskTitle(e.target.value)}
             value={newTaskTitle}
+            onKeyPress={(e) => e.key === 'Enter' && handleCreateNewTask()}
           />
           <button
             type="submit"
