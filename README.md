@@ -11,8 +11,8 @@ na pasta do projeto execute <strong>YARN DEV</strong>
 
 <h3>FUNÇÕES ADICIONAIS</h3>
 
-Forma de gerar Ids único já que antes era utilizado Math.random();
-Função de adicionar tasks pressionando o botão "Enter";
+Forma de gerar Ids único já que antes era utilizado Math.random(); <br>
+Função de adicionar tasks pressionando o botão "Enter"; <br>
 Foco no text input após adicionar nova task;
 
 
