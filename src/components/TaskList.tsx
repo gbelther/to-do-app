@@ -1,19 +1,15 @@
 import { useState } from 'react';
+import nextId from 'react-id-generator';
 
 import '../styles/tasklist.scss';
 
 import { FiTrash, FiCheckSquare } from 'react-icons/fi';
-import { computeHeadingLevel } from '@testing-library/dom';
 
 interface Task {
-  id: number;
+  id: string;
   title: string;
   isComplete: boolean;
 }
-
-// interface KeyPress {
-//   event: React.KeyboardEvent;
-// }
 
 export function TaskList() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -25,7 +21,7 @@ export function TaskList() {
     }
 
     const newTask = {
-      id: Math.random(),
+      id: nextId(),
       title: newTaskTitle,
       isComplete: false,
     };
@@ -34,7 +30,7 @@ export function TaskList() {
     setNewTaskTitle('');
   }
 
-  function handleToggleTaskCompletion(id: number) {
+  function handleToggleTaskCompletion(id: string) {
     const newTasks = tasks.map((task) => {
       if (task.id === id) {
         return { ...task, isComplete: !task.isComplete };
@@ -46,15 +42,11 @@ export function TaskList() {
     setTasks(newTasks);
   }
 
-  function handleRemoveTask(id: number) {
+  function handleRemoveTask(id: string) {
     const currentTask = tasks.filter((task) => task.id !== id);
 
     setTasks(currentTask);
   }
-
-  // function handleKeyUp(event: KeyPress) {
-  //   console.log(event);
-  // }
 
   return (
     <section className="task-list container">
@@ -63,6 +55,7 @@ export function TaskList() {
 
         <div className="input-group">
           <input
+            autoFocus
             type="text"
             placeholder="Adicionar novo todo"
             onChange={(e) => setNewTaskTitle(e.target.value)}
