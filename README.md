@@ -8,6 +8,8 @@ Lista de tarefas com as funções de adicionar nova tarefa, excluir tarefa e com
 
 > git clone https://github.com/gbelther/to-do-app.git
 
+> cd to-do-app
+
 > yarn
 
 > yarn dev
